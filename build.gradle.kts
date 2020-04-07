@@ -17,7 +17,9 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version = "2019.3.2"
+    setPlugins("gradle")
 }
+
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
@@ -26,8 +28,16 @@ tasks {
         kotlinOptions.jvmTarget = "1.8"
     }
 }
-tasks.getByName<org.jetbrains.intellij.tasks.PatchPluginXmlTask>("patchPluginXml") {
-    changeNotes("""
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>""")
+
+buildscript {
+    repositories {
+        flatDir {
+            dirs("$projectDir/lib")
+        }
+    }
+    dependencies {
+        classpath("com.github.chMatvey:gradle-plugin-1.0-SNAPSHOT")
+    }
 }
+
+apply(plugin = "com.github.chMatvey.basic")

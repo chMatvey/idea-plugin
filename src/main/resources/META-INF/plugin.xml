@@ -1,20 +1,19 @@
 <idea-plugin>
     <id>com.github.chMatvey.idea-plugin</id>
     <name>Basic</name>
+    <version>1.0</version>
     <vendor url="https://github.com/chMatvey/idea-plugin">chMatvey</vendor>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.gradle</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
     </extensions>
 
     <actions>
-        <action id="Basic.show" class="com.github.chMatvey.action.OpenShowFileContentDialogAction" text="Show File Content">
+        <action id="Basic.show" class="com.github.chMatvey.action.ShowFileContentAction" text="Show File Content">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
-        <!-- Add your actions here -->
     </actions>
 </idea-plugin>
